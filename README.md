@@ -82,22 +82,17 @@ and a **graphs page that explains all 32 training charts**.
 ## 🔄 How a prediction works
 
 ```mermaid
-sequenceDiagram
-    actor U as 👤 You
-    participant W as 🌐 Web app
-    participant A as ⚡ FastAPI
-    participant M as 🧠 Trained model (model.json)
-
-    U->>W: Answer / change a question
-    W->>A: POST /api/predict (21 answers)
-    A->>A: Validate ranges, encode answers
-    A->>M: log P(d) + Σ log p(xⱼ | d) for both classes
-    M-->>A: raw probability (log-sum-exp)
-    A->>A: Calibrate → compare with 80%-recall threshold
-    A-->>W: risk %, flag, top reasons, curve value
-    W-->>U: Gauge, recommendation, odds multipliers
-    Note over U,M: The whole round trip takes milliseconds
+flowchart LR
+    U["👤 You<br/>21 answers"] --> A["⚡ FastAPI<br/>validate + encode"]
+    A --> NB["🧠 Naive Bayes<br/>prior × 21 likelihoods"]
+    NB --> C["🎯 Calibrate<br/>raw score → honest %"]
+    C --> T{"Above the<br/>80%-recall threshold?"}
+    T -->|yes| Y["🩸 Recommend<br/>a blood test"]
+    T -->|no| N["✅ No test<br/>needed now"]
+    NB --> E["🔍 Explain<br/>×odds per answer"]
 ```
+
+The whole round trip takes milliseconds, so the gauge updates live as you answer.
 
 ### Training pipeline
 
