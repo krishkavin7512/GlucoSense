@@ -124,7 +124,9 @@ The full pipeline runs in **about 30 seconds** on a laptop CPU.
 Bayes' rule turns a prior into a posterior, and the *naive* assumption (answers are independent once you know the class)
 lets the 21 likelihoods simply multiply:
 
-$$P(D \mid \mathbf{x}) = \frac{P(D)\prod_{j=1}^{21} p(x_j \mid D)}{\sum_{d \in \{0,1\}} P(d)\prod_{j=1}^{21} p(x_j \mid d)}$$
+```math
+P(D \mid \mathbf{x}) = \frac{P(D)\prod_{j=1}^{21} p(x_j \mid D)}{\sum_{d \in \{0,1\}} P(d)\prod_{j=1}^{21} p(x_j \mid d)}
+```
 
 | Answer type | Likelihood | How it's learned |
 |---|---|---|
@@ -170,7 +172,9 @@ a calibrated risk of **13.3%**. The app's sensitivity slider switches between pr
 
 The diabetes rate at each whole-number BMI (15–60), fitted by regularised least squares:
 
-$$(\Phi^\top\Phi + \lambda I)\,\mathbf{w} = \Phi^\top \mathbf{t}$$
+```math
+(\Phi^\top\Phi + \lambda I)\,\mathbf{w} = \Phi^\top \mathbf{t}
+```
 
 On a small 1,000-person sample the test error is lowest at **M = 2** (E_RMS 0.049) and explodes at **M = 9** (8.13) and
 **M = 12** (186.9): overfitting you can watch live in the app. The shipped curve (M = 9, ln λ = −30, fitted on all
