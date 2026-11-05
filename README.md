@@ -293,6 +293,7 @@ The trained models ship in `artifacts/`, so the app starts instantly.
 |---|---|
 | `python run.py --retrain` | Retrain everything from scratch (≈30 s) |
 | `python -m backend.train --charts-only` | Rebuild the 32 graphs without retraining |
+| `pip install -r requirements-dev.txt` | Add the test tools (pytest, scikit-learn) |
 | `python -m pytest` | Run the 17 tests |
 
 <details>
