@@ -16,6 +16,7 @@ A Naive Bayes screener written from scratch in NumPy and trained on **253,680** 
 
 <img src="docs/screenshots/hero.jpg" alt="GlucoSense landing page" width="92%">
 
+**Live demo:** [https://glucosense-lemon.vercel.app](https://glucosense-lemon.vercel.app)<br>
 [The problem](#problem) · [What it does](#what) · [How it works](#how) · [Models](#models) · [Results](#results) · [Screenshots](#screenshots) · [Run it](#run)
 
 </div>
